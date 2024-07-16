@@ -17,7 +17,7 @@ public class Client {
 	public static void main(String[] args) throws IOException {
 
 		// 입력용 스캐너
-		Scanner sc = new Scanner(System.in);
+		//Scanner sc = new Scanner(System.in);
 
 		Socket socket = new Socket(); // 전화기 들고 시작
 		System.out.println("클라이언트 시작");
@@ -37,16 +37,22 @@ public class Client {
 		InputStreamReader isr = new InputStreamReader(in, "UTF-8");
 
 		BufferedReader br = new BufferedReader(isr);
+		
+		//스캐너 준비
+		InputStream scin = System.in;
+		InputStreamReader scisr = new InputStreamReader(scin, "UTF-8");
+		BufferedReader sbr = new BufferedReader(scisr);
 
 		while (true) {
 			System.out.print("입력해주세요:");
-			String str = sc.nextLine();
-
-			if ("/q".equals(str)) {
+			//String str = sc.nextLine();
+			String scbr = sbr.readLine();
+			
+			if ("/q".equals(scbr)) {
 				break;
 			}
 
-			bw.write(str);
+			bw.write(scbr);
 			bw.newLine();
 			bw.flush(); // buffered 공간이 다 안차도 보내주세요.
 
