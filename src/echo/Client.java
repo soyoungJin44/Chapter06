@@ -9,11 +9,17 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.util.Scanner;
 
 public class Client {
 
 			//연결할 다른 컴터라고 생각
 	public static void main(String[] args) throws IOException {
+		
+		//입력용 스캐너
+		Scanner sc = new Scanner(System.in);
+		System.out.print("입력해주세요:");
+		String str = sc.nextLine();
 		
 		Socket socket = new Socket();		//전화기 들고 시작
 		System.out.println("클라이언트 시작");
@@ -35,7 +41,8 @@ public class Client {
 		
 		BufferedReader br = new BufferedReader(isr);
 		
-		bw.write("안녕");
+		
+		bw.write(str);
 		bw.newLine();
 		bw.flush();		//buffered 공간이 다 안차도 보내주세요.
 		
